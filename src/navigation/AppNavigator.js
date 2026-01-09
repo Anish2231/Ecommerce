@@ -10,19 +10,15 @@ import CartScreen from '../screens/CartScreen';
 const Stack = createNativeStackNavigator();
 
 function CartHeaderButton({ navigation }) {
-  const cartItems = useSelector(state => state.cart.items);
+  const cartItems = useSelector(state => state.cart?.items || []);
 
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate('Cart')}
-      style={{ marginRight: 16 }}
-    >
-      <Text style={{ fontSize: 16 }}>
-        Cart ({cartItems.length})
-      </Text>
+    <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+      <Text>Cart ({cartItems.length})</Text>
     </TouchableOpacity>
   );
 }
+
 
 export default function AppNavigator() {
   return (
